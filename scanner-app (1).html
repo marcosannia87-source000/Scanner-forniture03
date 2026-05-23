@@ -13,7 +13,7 @@
     
     <!-- PWA Manifest -->
     <link rel="manifest" href="manifest.json">
-    <link rel="icon" type="image/png" sizes="192x192" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 192 192'><rect fill='%230f172a' width='192' height='192'/><text x='96' y='120' font-size='100' font-weight='bold' text-anchor='middle' fill='%2338bdf8' font-family='Arial'>📦</text></svg>">
+    <link rel="icon" type="image/png" sizes="192x192" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 192 192'><rect fill='%230f172a' width='192' height='192'/><text x='96' y='120' font-size='100' font-weight='bold' text-anchor='middle' fill='%2338bdf8' font-family='Arial'>ðŸ“¦</text></svg>">
     
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html5-qrcode/2.3.8/html5-qrcode.min.js"></script>
     
@@ -312,7 +312,7 @@
         <button onclick="promptInstall()">Installa</button>
     </div>
 
-    <h2>📦 Scanner Forniture</h2>
+    <h2>ðŸ“¦ Scanner Forniture</h2>
 
     <div id="main-area">
         <div class="card">
@@ -325,11 +325,11 @@
                 <label>Filtro Prefisso (opzionale)</label>
                 <input type="text" id="prefixFilter" placeholder="SN, S/N..." inputmode="text">
             </div>
-            <button class="btn btn-success" onclick="startScanning(null)">▶ Avvia Scansione</button>
+            <button class="btn btn-success" onclick="startScanning(null)">â–¶ Avvia Scansione</button>
         </div>
 
         <div class="card">
-            <h3>📂 Archivio</h3>
+            <h3>ðŸ“‚ Archivio</h3>
             <div id="archive-list"></div>
         </div>
     </div>
@@ -338,11 +338,11 @@
         <div id="active-info" style="font-size: 13px; color: var(--text-muted); margin-bottom: 10px;"></div>
         <div id="feedback-message" class="log-match"></div>
         <div id="reader"></div>
-        <button class="btn btn-danger" onclick="stopScanning()">⏹ Torna al Menu</button>
+        <button class="btn btn-danger" onclick="stopScanning()">â¹ Torna al Menu</button>
         <div class="list-container">
             <div class="counter">
                 <span>Pezzi: <strong id="total-count">0</strong></span>
-                <button id="btn-download" class="btn btn-sm btn-success" disabled onclick="exportCurrentToCSV()">⬇ Esporta CSV</button>
+                <button id="btn-download" class="btn btn-sm btn-success" disabled onclick="exportCurrentToCSV()">â¬‡ Esporta CSV</button>
             </div>
             <ul id="serials-list"></ul>
         </div>
@@ -414,7 +414,7 @@
             qrCodeSuccessCallback,
             errorCallback
         ).catch(err => {
-            document.getElementById('feedback-message').innerText = "❌ Accesso fotocamera negato";
+            document.getElementById('feedback-message').innerText = "âŒ Accesso fotocamera negato";
             setTimeout(stopScanning, 2000);
         });
     }
@@ -427,20 +427,20 @@
             const prefissiArray = prefisso.split(',').map(p => p.trim());
             const matchesPrefix = prefissiArray.some(p => decodedText.toLowerCase().includes(p.toLowerCase()));
             if (!matchesPrefix) {
-                document.getElementById('feedback-message').innerText = "❌ Prefisso errato";
+                document.getElementById('feedback-message').innerText = "âŒ Prefisso errato";
                 return;
             }
         }
 
         if (archivio[currentListName].seriali.includes(decodedText)) {
-            document.getElementById('feedback-message').innerText = "⚠ Già scansionato";
+            document.getElementById('feedback-message').innerText = "âš  GiÃ  scansionato";
             return;
         }
 
         archivio[currentListName].seriali.push(decodedText);
         archivio[currentListName].prefisso = prefisso;
         localStorage.setItem('forniture_archive', JSON.stringify(archivio));
-        document.getElementById('feedback-message').innerText = "✅ " + decodedText;
+        document.getElementById('feedback-message').innerText = "âœ… " + decodedText;
         aggiornaInterfacciaCorrente();
     }
 
@@ -479,8 +479,8 @@
 
         archiveArea.innerHTML = entries.reverse().map(nome => `
             <div class="archive-item">
-                <div class="archive-info">📋 ${nome}</div>
-                <div class="archive-date">${archivio[nome].seriali.length} pezzi • ${archivio[nome].data}</div>
+                <div class="archive-info">ðŸ“‹ ${nome}</div>
+                <div class="archive-date">${archivio[nome].seriali.length} pezzi â€¢ ${archivio[nome].data}</div>
                 <div class="button-group">
                     <button class="btn btn-sm btn-secondary" onclick="startScanning('${nome.replace(/'/g, "\\'")}')">Riprendi</button>
                     <button class="btn btn-sm btn-success" onclick="exportListToCSV('${nome.replace(/'/g, "\\'")}')">Esporta</button>

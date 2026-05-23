@@ -342,7 +342,7 @@
         <div class="list-container">
             <div class="counter">
                 <span>Pezzi: <strong id="total-count">0</strong></span>
-                <button id="btn-download" class="btn btn-sm btn-success" disabled onclick="exportCurrentToCSV()">â¬‡ Esporta CSV</button>
+                <button id="btn-download" class="btn btn-sm btn-success" disabled onclick="exportCurrentToCSV()">Esporta CSV</button>
             </div>
             <ul id="serials-list"></ul>
         </div>
@@ -414,7 +414,7 @@
             qrCodeSuccessCallback,
             errorCallback
         ).catch(err => {
-            document.getElementById('feedback-message').innerText = "âŒ Accesso fotocamera negato";
+            document.getElementById('feedback-message').innerText = "Accesso fotocamera negato";
             setTimeout(stopScanning, 2000);
         });
     }
@@ -427,20 +427,20 @@
             const prefissiArray = prefisso.split(',').map(p => p.trim());
             const matchesPrefix = prefissiArray.some(p => decodedText.toLowerCase().includes(p.toLowerCase()));
             if (!matchesPrefix) {
-                document.getElementById('feedback-message').innerText = "âŒ Prefisso errato";
+                document.getElementById('feedback-message').innerText = "Prefisso errato";
                 return;
             }
         }
 
         if (archivio[currentListName].seriali.includes(decodedText)) {
-            document.getElementById('feedback-message').innerText = "âš  GiÃ  scansionato";
+            document.getElementById('feedback-message').innerText = "Giá  scansionato";
             return;
         }
 
         archivio[currentListName].seriali.push(decodedText);
         archivio[currentListName].prefisso = prefisso;
         localStorage.setItem('forniture_archive', JSON.stringify(archivio));
-        document.getElementById('feedback-message').innerText = "âœ… " + decodedText;
+        document.getElementById('feedback-message').innerText = "... " + decodedText;
         aggiornaInterfacciaCorrente();
     }
 

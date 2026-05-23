@@ -479,8 +479,8 @@
 
         archiveArea.innerHTML = entries.reverse().map(nome => `
             <div class="archive-item">
-                <div class="archive-info">ðŸ“‹ ${nome}</div>
-                <div class="archive-date">${archivio[nome].seriali.length} pezzi â€¢ ${archivio[nome].data}</div>
+                <div class="archive-info">${nome}</div>
+                <div class="archive-date">${archivio[nome].seriali.length} pezzi - ${archivio[nome].data}</div>
                 <div class="button-group">
                     <button class="btn btn-sm btn-secondary" onclick="startScanning('${nome.replace(/'/g, "\\'")}')">Riprendi</button>
                     <button class="btn btn-sm btn-success" onclick="exportListToCSV('${nome.replace(/'/g, "\\'")}')">Esporta</button>

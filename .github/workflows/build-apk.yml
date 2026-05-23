@@ -44,7 +44,7 @@ jobs:
              Scanner-Forniture.apk
 
       - name: Upload APK as artifact
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: Scanner-Forniture-APK
           path: Scanner-Forniture.apk
